@@ -18,24 +18,36 @@ function obtener_estructura_directorios($ruta,$id){
             // Se muestran todos los archivos y carpetas excepto "." y ".."
             if ($archivo != "." && $archivo != "..") {
                 // Si es un directorio se recorre recursivamente
+
+                     $extension = pathinfo($archivo, PATHINFO_EXTENSION);
+                     $extension = strtolower($extension);
+
                 if (is_dir($ruta_completa)) {
                    # echo "<li>" . $archivo . "</li>";
                 	#  echo "<img width=40% src=archivos/10/" . $archivo . ">";
 
-                     $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION);
-                     $extension = strtolower($extension);
+
+
+
 
                     if($extension=="pdf"){
 
-                         echo "<a href='archivos/{$id}/". $archivo ."'><img width=40% src='http://precitechnique.com/wp-content/uploads/2015/01/pdf.ico.png". $archivo ."'></a>";
+                         echo "<a href='archivos/{$id}/". $archivo ."'><img width=40% src=pdf.jpg". $archivo ."'></a>";
                     obtener_estructura_directorios($ruta_completa);
                     }
 
             echo "<a href='archivos/{$id}/". $archivo ."'><img width=40% src='archivos/{$id}/". $archivo ."'></a>";
                     obtener_estructura_directorios($ruta_completa);
                 } else {
+
+                     if($extension=="pdf"){
+
+                          echo "<a href='archivos/{$id}/". $archivo ."'><img width: 60px; src='pdf.jpg'></a>";
+                     }else{
+                            echo "<a href='archivos/{$id}/". $archivo ."' ><img style='width: 60px;' src='archivos/{$id}/". $archivo ."'></a>";
+                     }
                     #echo "<li>" . $archivo . "</li>";
-                   echo "<a href='archivos/{$id}/". $archivo ."'><img width=40% src='archivos/{$id}/". $archivo ."'></a>";
+                 
                 }
             }
         }
