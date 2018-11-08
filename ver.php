@@ -1,5 +1,5 @@
 <?php
-
+#https://programandoointentandolo.com/2013/09/mostrar-archivos-de-una-carpeta-con-php.html
 
 function obtener_estructura_directorios($ruta,$id){
 
